@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <Forms>
+    <UDF1 Class="TCEForm" Encoding="Ascii85">i*LV82nldAU:MM2b.}cxWeIh0Gi32eO*Ft]WMuP5%{mcIVgA6t9Fkwal+AgInNpI$=7,zGoLEqjnV-i7R=Z!snU_7Z9$b:GlFH6qUhJEhmzkScm72o9000</UDF1>
+  </Forms>
+  <CheatEntries>
+    <CheatEntry>
+      <ID>29</ID>
+      <Description>"回合"</Description>
+      <LastState Value="5" RealAddress="2492D000"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Rance10.exe"+003FCBB0</Address>
+      <Offsets>
+        <Offset>8</Offset>
+        <Offset>10</Offset>
+        <Offset>0</Offset>
+        <Offset>420</Offset>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>35</ID>
+      <Description>"部队Point"</Description>
+      <LastState Value="20" RealAddress="0D50A768"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Rance10.exe"+003FCBB8</Address>
+      <Offsets>
+        <Offset>8</Offset>
+        <Offset>10</Offset>
+        <Offset>4</Offset>
+        <Offset>4D4</Offset>
+        <Offset>150</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>1</ID>
+      <Description>"当前HP"</Description>
+      <LastState Value="367307" RealAddress="0E7B5AB8"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Rance10.exe"+003FCBB0</Address>
+      <Offsets>
+        <Offset>10</Offset>
+        <Offset>10</Offset>
+        <Offset>C</Offset>
+        <Offset>438</Offset>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>36</ID>
+      <Description>"战斗基础经验（包括自动）"</Description>
+      <LastState Value="50" RealAddress="0D50A9C4"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Rance10.exe"+003FCBB0</Address>
+      <Offsets>
+        <Offset>C</Offset>
+        <Offset>10</Offset>
+        <Offset>8</Offset>
+        <Offset>520</Offset>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>26</ID>
+      <Description>"累积经验"</Description>
+      <LastState Value="1000000509" RealAddress="0CB6691C"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Rance10.exe"+003FCBB0</Address>
+      <Offsets>
+        <Offset>1C</Offset>
+        <Offset>10</Offset>
+        <Offset>C</Offset>
+        <Offset>42C</Offset>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>32</ID>
+      <Description>"餐券"</Description>
+      <LastState Value="3" RealAddress="0CB66900"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Rance10.exe"+003FCBB0</Address>
+      <Offsets>
+        <Offset>0</Offset>
+        <Offset>10</Offset>
+        <Offset>C</Offset>
+        <Offset>42C</Offset>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>37</ID>
+      <Description>"被动属性"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>17</ID>
+          <Description>"防御相关属性"</Description>
+          <Options moRecursiveSetValue="1" moManualExpandCollapse="1"/>
+          <DropDownList>当前HP
+</DropDownList>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>5</ID>
+              <Description>"物理抗性"</Description>
+              <LastState Value="9" RealAddress="0B3F2944"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>C</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>6</ID>
+              <Description>"魔法抗性"</Description>
+              <LastState Value="9" RealAddress="0B3F2948"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>10</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>8</ID>
+              <Description>"异常状态抗性"</Description>
+              <LastState Value="9" RealAddress="0B3F2950"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>18</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>13</ID>
+              <Description>"HP增加率"</Description>
+              <LastState Value="36" RealAddress="0B3F2964"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>2C</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>18</ID>
+          <Description>"攻击相关属性"</Description>
+          <Options moManualExpandCollapse="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>3</ID>
+              <Description>"物理增伤率"</Description>
+              <LastState Value="36" RealAddress="0B3F293C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>4</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>4</ID>
+              <Description>"魔法增伤率"</Description>
+              <LastState Value="41" RealAddress="0B3F2940"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>8</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>9</ID>
+              <Description>"自动战斗增伤率"</Description>
+              <LastState Value="7" RealAddress="0B3F2954"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>1C</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>10</ID>
+              <Description>"必杀发生率"</Description>
+              <LastState Value="11" RealAddress="0B3F2958"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>11</ID>
+              <Description>"连击发生率"</Description>
+              <LastState Value="7" RealAddress="0B3F295C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>24</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>19</ID>
+          <Description>"经验等其他属性"</Description>
+          <Options moManualExpandCollapse="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>12</ID>
+              <Description>"EXP增加率(最大有效值100)"</Description>
+              <DropDownList>HP增加率
+</DropDownList>
+              <LastState Value="36" RealAddress="0B3F2960"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>28</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>14</ID>
+              <Description>"自动恢复"</Description>
+              <LastState Value="6" RealAddress="0B3F2968"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>30</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>15</ID>
+              <Description>"宝箱发现率（最大有效值100）"</Description>
+              <LastState Value="6" RealAddress="0B3F296C"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>34</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16</ID>
+              <Description>"抢攻发生率"</Description>
+              <LastState Value="6" RealAddress="0B3F2970"/>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB0</Address>
+              <Offsets>
+                <Offset>38</Offset>
+                <Offset>10</Offset>
+                <Offset>4</Offset>
+                <Offset>478</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>31</ID>
+      <Description>"人类死亡率，单位0.1%"</Description>
+      <LastState Value="201" RealAddress="246F6DCC"/>
+      <VariableType>4 Bytes</VariableType>
+      <Address>"Rance10.exe"+003FCBB4</Address>
+      <Offsets>
+        <Offset>94</Offset>
+        <Offset>10</Offset>
+        <Offset>C</Offset>
+        <Offset>5B4</Offset>
+        <Offset>8</Offset>
+      </Offsets>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>21</ID>
+      <Description>"各国兵力，单位千人（尽量不要锁定兵力，否则容易闪退）"</Description>
+      <Options moManualExpandCollapse="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>22</ID>
+          <Description>"利萨斯兵力"</Description>
+          <LastState Value="108" RealAddress="246F6D9C"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"Rance10.exe"+003FCBB4</Address>
+          <Offsets>
+            <Offset>64</Offset>
+            <Offset>10</Offset>
+            <Offset>C</Offset>
+            <Offset>5B4</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>23</ID>
+          <Description>"赫尔曼兵力"</Description>
+          <LastState Value="66" RealAddress="246F6DA0"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"Rance10.exe"+003FCBB4</Address>
+          <Offsets>
+            <Offset>68</Offset>
+            <Offset>10</Offset>
+            <Offset>C</Offset>
+            <Offset>5B4</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>24</ID>
+          <Description>"赛斯兵力"</Description>
+          <LastState Value="99" RealAddress="246F6DA4"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"Rance10.exe"+003FCBB4</Address>
+          <Offsets>
+            <Offset>6c</Offset>
+            <Offset>10</Offset>
+            <Offset>C</Offset>
+            <Offset>5B4</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>7</ID>
+          <Description>"自由都市兵力"</Description>
+          <LastState Value="66" RealAddress="246F6DA8"/>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"Rance10.exe"+003FCBB4</Address>
+          <Offsets>
+            <Offset>70</Offset>
+            <Offset>10</Offset>
+            <Offset>C</Offset>
+            <Offset>5B4</Offset>
+            <Offset>8</Offset>
+          </Offsets>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>

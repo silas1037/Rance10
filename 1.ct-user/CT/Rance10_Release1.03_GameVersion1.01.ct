@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="28">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>115</ID>
+      <Description>"请多存档，作者对任何使用此作弊表而产生的问题与风险不承担任何责任"</Description>
+      <Options moHideChildren="1" moManualExpandCollapse="1"/>
+      <LastState Activated="1"/>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+aobscanmodule(FirstInject,Rance10.exe,89 3C 98 E9 14 01 00 00)
+aobscanmodule(SecondInject,Rance10.exe,8B 04 B0 89 45 FC 5F 5E 5D C3)
+registersymbol(FirstInject)
+registersymbol(SecondInject)
+alloc(newmem,2048)
+//======functions======
+label(FunctionGetPointer)
+label(ReturnZero)
+label(ReturnValue)
+label(IsInvalidPointer)
+label(FunctionRevivify)
+//======functions======
+//======Variables======
+label(AddrTagMaxAP)
+registersymbol(AddrTagMaxAP)
+//======Variables======
+label(BeginKDCheck)
+label(returnhereKD)
+label(originalcodeKD)
+label(LblHP)
+label(LblDrop)
+label(LblExpTotal)
+label(LblExpBase)
+label(LblOneKillAndAP)
+label(LblAP)
+label(LblCleanAndNext)
+label(SwitchDrop)
+label(SwitchExp)
+label(SwitchAP)
+label(SwitchOneKill)
+label(SwitchHP)
+registersymbol(SwitchDrop)
+registersymbol(SwitchExp)
+registersymbol(SwitchAP)
+registersymbol(SwitchOneKill)
+registersymbol(SwitchHP)
+//////////////////////////////
+label(BeginFBPCheck)
+label(returnhereFBP)
+label(originalcodeFBP)
+label(LblCheckESI)
+label(LblLockPoint)
+label(LblLockFBF)
+label(SwitchPoint)
+label(SwitchFood)
+label(SwitchBadge)
+label(SwitchFriendship)
+registersymbol(SwitchPoint)
+registersymbol(SwitchFood)
+registersymbol(SwitchBadge)
+registersymbol(SwitchFriendship)
+
+newmem:
+////////////////////////Custom Functions/////////////////////
+/* Function: Gets the pointer based on the given offsets.
+ * Push: 3 pass offset / 4 pass offset
+ * return: Eax=Pointer*/
+FunctionGetPointer:
+  mov eax,["Rance10.exe"+003FCBB4]
+  push edi
+  push edx
+  push ecx
+  ////////////
+  lea edi,[eax+8]
+  push 4
+  push edi
+  call IsBadReadPtr
+  cmp eax,0
+  jne ReturnZero
+  mov eax,[edi]
+  ////////////
+  mov edi,[esp+10]
+  lea edi,[eax+edi*4]
+  push 4
+  push edi
+  call IsBadReadPtr
+  cmp eax,0
+  jne ReturnZero
+  mov eax,[edi]
+  ////////////
+  mov edi,[esp+14]
+  lea edi,[eax+edi*4]
+  push 4
+  push edi
+  call IsBadReadPtr
+  cmp eax,0
+  jne ReturnZero
+  mov eax,[edi]
+  ////////////
+  lea edi,[eax+10]
+  push 4
+  push edi
+  call IsBadReadPtr
+  cmp eax,0
+  jne ReturnZero
+  mov eax,[edi]
+  jmp ReturnValue
+ReturnZero:
+  mov eax,0
+ReturnValue:
+  pop ecx
+  pop edx
+  pop edi
+  mov [esp+4],edi
+  pop edi
+  mov [esp+4],edi
+  pop edi
+  ret
+/* Function: Determines if the given pointer is invalid.
+ * Eax: Pointer
+ * return: Eax=0=OK, otherwise, invalid. */
+IsInvalidPointer:
+  push edx
+  push ecx
+  push 4
+  push eax
+  call IsBadReadPtr
+  pop ecx
+  pop edx
+  ret
+/* Function: revivify the stack and registers.*/
+FunctionRevivify:
+  mov eax,edi
+  mov edi,[esp+C]
+  pop ecx
+  mov [esp+8],ecx
+  pop ecx
+  pop edx
+  ret
+////////////////////////////////////////////////////////////
+BeginKDCheck:
+////////////////////////////////
+  push edi
+  push edx
+  push ecx
+  mov edi,eax
+////////////////////////////////
+SwitchHP:
+//  cmp ebx,4
+//  je LblHP
+  db 90 90 90 90 90 90 90 90 90
+SwitchDrop:
+//  cmp ebx,D
+//  je LblDrop
+  db 90 90 90 90 90 90 90 90 90
+SwitchExp:
+//  cmp ebx,7
+//  je LblExpTotal
+//  cmp ebx,3
+//  je LblExpBase
+  db 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90
+  cmp ebx,0
+  je LblOneKillAndAP
+  call FunctionRevivify
+  jmp originalcodeKD
+////////////////////////////////
+LblHP:
+  push 3
+  push 10E
+  call FunctionGetPointer
+  cmp eax,edi
+  call FunctionRevivify
+  jne originalcodeKD
+  mov edi,#10000000
+  jmp originalcodeKD
+////////////////////////////////
+LblDrop:
+  push 1
+  push 11E
+  call FunctionGetPointer
+  cmp eax,edi
+  call FunctionRevivify
+  jne originalcodeKD
+  mov edi,#100
+  jmp originalcodeKD
+////////////////////////////////
+LblExpTotal:
+  push 3
+  push 10B
+  call FunctionGetPointer
+  cmp eax,edi
+  call FunctionRevivify
+  jne originalcodeKD
+  mov edi,#100000000
+  jmp originalcodeKD
+////////////////////////////////
+LblExpBase:
+  push 2
+  push 148
+  call FunctionGetPointer
+  cmp eax,edi
+  call FunctionRevivify
+  jne originalcodeKD
+  mov edi,#100000000
+  jmp originalcodeKD
+////////////////////////////////
+LblOneKillAndAP:
+  push 0
+  push 0
+  call FunctionGetPointer
+  cmp eax,0
+  je LblCleanAndNext
+  mov ecx,eax
+  lea eax,[ecx+48C]
+  call IsInvalidPointer
+  cmp eax,0
+  jne LblCleanAndNext
+  mov eax,[ecx+48C]
+  cmp eax,FFFFFFFF
+  je LblAP
+  mov edx,eax
+  shr eax,2
+  and edx,3
+  push edx
+  push eax
+  call FunctionGetPointer
+  cmp eax,edi
+  jne LblAP
+  call FunctionRevivify
+SwitchOneKill:
+//  mov edi,0
+  db 90 90 90 90 90
+  jmp originalcodeKD
+///////////////////
+LblAP:
+  lea eax,[ecx+490]
+  call IsInvalidPointer
+  cmp eax, 0
+  jne LblCleanAndNext
+  mov eax,[ecx+490]
+  cmp eax,FFFFFFFF
+  je LblCleanAndNext
+  mov edx,eax
+  shr eax,2
+  and edx,3
+  push edx
+  push eax
+  call FunctionGetPointer
+  cmp eax,0
+  je LblCleanAndNext
+  lea ecx,[eax+38]
+  mov eax, ecx
+  call IsInvalidPointer
+  cmp eax, 0
+  jne LblCleanAndNext
+  mov eax,[ecx]
+  mov edx,eax
+  shr eax,2
+  and edx,3
+  push edx
+  push eax
+  call FunctionGetPointer
+  cmp eax,edi
+  call FunctionRevivify
+  jne originalcodeKD
+  cmp edi,0
+  je originalcodeKD
+SwitchAP:
+  jmp originalcodeKD
+  mov edi,[AddrTagMaxAP]
+  jmp originalcodeKD
+LblCleanAndNext:
+  call FunctionRevivify
+////////////////////////////////
+originalcodeKD:
+  mov [eax+ebx*4],edi
+  jmp Rance10.exe+21356A
+  jmp returnhereKD
+////////////////////////////////////////////////////////////////////////
+BeginFBPCheck:
+ cmp edx,10B
+ je LblCheckESI
+ cmp edx,135
+ jne originalcodeFBP
+SwitchPoint:
+// cmp esi,2
+// je LblLockPoint
+ db 90 90 90 90 90 90 90 90 90
+ jmp originalcodeFBP
+///////////////////////////////
+LblLockPoint:
+  push eax
+  mov esi,eax
+  push 1
+  push 135
+  call FunctionGetPointer
+  cmp eax,esi
+  mov esi,2
+  pop eax
+  jne originalcodeFBP
+  mov [eax+esi*4],#20
+  jmp originalcodeFBP
+///////////////////////////////
+LblCheckESI:
+SwitchFood:
+//  cmp esi,0
+//  je LblLockFBF
+  db 90 90 90 90 90 90 90 90 90
+SwitchBadge:
+//  cmp esi,1
+//  je LblLockFBF
+  db 90 90 90 90 90 90 90 90 90
+SwitchFriendship:
+//  cmp esi,2
+//  je LblLockFBF
+  db 90 90 90 90 90 90 90 90 90
+  jmp originalcodeFBP
+///////////////////////////////
+LblLockFBF:
+  push eax
+  push edi
+  mov edi,eax
+//////////////////
+  push 3
+  push 10B
+  call FunctionGetPointer
+  cmp eax, edi
+  pop edi
+  pop eax
+  jne originalcodeFBP
+  mov [eax+esi*4],3
+originalcodeFBP:
+  mov eax,[eax+esi*4]
+  mov [ebp-04],eax
+  jmp returnhereFBP
+//////////////////////////////////////
+AddrTagMaxAP:
+db 06 00 00 00
+
+//===================================================
+//===================================================
+//"Rance10.exe"+21344E:
+FirstInject:
+  jmp BeginKDCheck
+  nop
+  nop
+  nop
+  returnhereKD:
+//=======================================
+SecondInject:
+  jmp BeginFBPCheck
+  nop
+  returnhereFBP:
+
+
+
+[DISABLE]
+//"Rance10.exe"+21344E:
+FirstInject:
+  mov [eax+ebx*4],edi
+  jmp Rance10.exe+21356A
+//Alt: db 89 3C 98 E9 14 01 00 00
+
+//"Rance10.exe"+212F49:
+SecondInject:
+  mov eax,[eax+esi*4]
+  mov [ebp-04],eax
+//Alt: db 8B 04 B0 89 45 FC
+
+unregistersymbol(FirstInject)
+unregistersymbol(SecondInject)
+
+unregistersymbol(AddrTagMaxAP)
+
+unregistersymbol(SwitchDrop)
+unregistersymbol(SwitchExp)
+unregistersymbol(SwitchAP)
+unregistersymbol(SwitchOneKill)
+unregistersymbol(SwitchHP)
+//////////////////////////////////////
+unregistersymbol(SwitchPoint)
+unregistersymbol(SwitchFood)
+unregistersymbol(SwitchBadge)
+unregistersymbol(SwitchFriendship)
+dealloc(newmem)
+
+
+</AssemblerScript>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Toggle Activation</Action>
+          <Keys>
+            <Key>45</Key>
+          </Keys>
+          <ID>0</ID>
+        </Hotkey>
+      </Hotkeys>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>116</ID>
+          <Description>"生命最大"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">90 90 90 90 90 90 90 90 90:OFF
+83 FB 04 0F 84 2E 00 00 00:ON
+</DropDownList>
+          <LastState Value="90 90 90 90 90 90 90 90 90" RealAddress="008900A0"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>9</ByteLength>
+          <Address>SwitchHP</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>36</Key>
+              </Keys>
+              <Value>83 FB 04 0F 84 2E 00 00 00</Value>
+              <Description>HP ON</Description>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>35</Key>
+              </Keys>
+              <Value>90 90 90 90 90 90 90 90 90</Value>
+              <Description>HP OFF</Description>
+              <ID>1</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>117</ID>
+          <Description>"见面秒杀"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">BF 00 00 00 00:ON
+90 90 90 90 90:OFF
+</DropDownList>
+          <LastState Value="90 90 90 90 90" RealAddress="008901B6"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>5</ByteLength>
+          <Address>SwitchOneKill</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>36</Key>
+              </Keys>
+              <Value>BF 00 00 00 00</Value>
+              <Description>ON</Description>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>35</Key>
+              </Keys>
+              <Value>90 90 90 90 90</Value>
+              <Description>OFF</Description>
+              <ID>1</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>118</ID>
+          <Description>"AP最大"</Description>
+          <Options moManualExpandCollapse="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>119</ID>
+              <Description>"AP最大值不是修改游戏的，而是必须设定为游戏对应的最大值。"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>0080FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>120</ID>
+              <Description>"目前我没找到自动获取这个值的方法，只能手动设置。"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>0080FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>121</ID>
+              <Description>"AP最大值"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">06:06
+0A:10
+</DropDownList>
+              <LastState Value="0A" RealAddress="008902F2"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Byte</VariableType>
+              <Address>AddrTagMaxAP</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>36</Key>
+                  </Keys>
+                  <Value>0A</Value>
+                  <Description>10</Description>
+                  <ID>0</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>122</ID>
+              <Description>"AP最大(其实是6)"</Description>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">90 90 90 90 90:ON
+E9 10 00 00 00:OFF
+</DropDownList>
+              <LastState Value="E9 10 00 00 00" RealAddress="00890235"/>
+              <ShowAsHex>1</ShowAsHex>
+              <VariableType>Array of byte</VariableType>
+              <ByteLength>5</ByteLength>
+              <Address>SwitchAP</Address>
+              <Hotkeys>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>36</Key>
+                  </Keys>
+                  <Value>90 90 90 90 90</Value>
+                  <Description>ON</Description>
+                  <ID>0</ID>
+                </Hotkey>
+                <Hotkey>
+                  <Action>Set Value</Action>
+                  <Keys>
+                    <Key>35</Key>
+                  </Keys>
+                  <Value>E9 10 00 00 00</Value>
+                  <Description>off</Description>
+                  <ID>1</ID>
+                </Hotkey>
+              </Hotkeys>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>123</ID>
+          <Description>"掉落率最大"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">83 FB 0D 0F 84 48 00 00 00:ON
+90 90 90 90 90 90 90 90 90:OFF
+</DropDownList>
+          <LastState Value="90 90 90 90 90 90 90 90 90" RealAddress="008900A9"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>9</ByteLength>
+          <Address>SwitchDrop</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>36</Key>
+              </Keys>
+              <Value>83 FB 0D 0F 84 48 00 00 00</Value>
+              <Description>ON</Description>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>35</Key>
+              </Keys>
+              <Value>90 90 90 90 90 90 90 90 90</Value>
+              <Description>OFF</Description>
+              <ID>1</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>124</ID>
+          <Description>"经验最大"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">83 FB 07 0F 84 62 00 00 00 83 FB 03 0F 84 7C 00 00 00:ON
+90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90:OFF
+</DropDownList>
+          <LastState Value="90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90" RealAddress="008900B2"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>18</ByteLength>
+          <Address>SwitchEXP</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>36</Key>
+              </Keys>
+              <Value>83 FB 07 0F 84 62 00 00 00 83 FB 03 0F 84 7C 00 00 00</Value>
+              <Description>ON</Description>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>35</Key>
+              </Keys>
+              <Value>90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90</Value>
+              <Description>OFF</Description>
+              <ID>1</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>125</ID>
+          <Description>"食券/金块最大"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">83 FE 00 0F 84 17 00 00 00:ON
+90 90 90 90 90 90 90 90 90:OFF
+</DropDownList>
+          <LastState Value="90 90 90 90 90 90 90 90 90" RealAddress="008902A6"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>9</ByteLength>
+          <Address>SwitchFood</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>36</Key>
+              </Keys>
+              <Value>83 FE 00 0F 84 17 00 00 00</Value>
+              <Description>on</Description>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>35</Key>
+              </Keys>
+              <Value>90 90 90 90 90 90 90 90 90</Value>
+              <Description>OFF</Description>
+              <ID>1</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>126</ID>
+          <Description>"徽章最大"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">83 FE 01 0F 84 0E 00 00 00:ON
+90 90 90 90 90 90 90 90 90:OFF
+</DropDownList>
+          <LastState Value="90 90 90 90 90 90 90 90 90" RealAddress="008902AF"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>9</ByteLength>
+          <Address>SwitchBadge</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>127</ID>
+          <Description>"友情值最大"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">83 FE 02 0F 84 05 00 00 00:ON
+90 90 90 90 90 90 90 90 90:OFF
+</DropDownList>
+          <LastState Value="90 90 90 90 90 90 90 90 90" RealAddress="008902B8"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>9</ByteLength>
+          <Address>SwitchFriendship</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>36</Key>
+              </Keys>
+              <Value>83 FE 02 0F 84 05 00 00 00</Value>
+              <Description>ON</Description>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>35</Key>
+              </Keys>
+              <Value>90 90 90 90 90 90 90 90 90</Value>
+              <Description>OFF</Description>
+              <ID>1</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>128</ID>
+          <Description>"Point最大"</Description>
+          <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">83 FE 02 0F 84 05 00 00 00:ON
+90 90 90 90 90 90 90 90 90:OFF
+</DropDownList>
+          <LastState Value="90 90 90 90 90 90 90 90 90" RealAddress="0089026F"/>
+          <ShowAsHex>1</ShowAsHex>
+          <VariableType>Array of byte</VariableType>
+          <ByteLength>9</ByteLength>
+          <Address>SwitchPoint</Address>
+          <Hotkeys>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>36</Key>
+              </Keys>
+              <Value>83 FE 02 0F 84 05 00 00 00</Value>
+              <Description>ON</Description>
+              <ID>0</ID>
+            </Hotkey>
+            <Hotkey>
+              <Action>Set Value</Action>
+              <Keys>
+                <Key>35</Key>
+              </Keys>
+              <Value>90 90 90 90 90 90 90 90 90</Value>
+              <Description>OFF</Description>
+              <ID>1</ID>
+            </Hotkey>
+          </Hotkeys>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>167</ID>
+          <Description>"兵力"</Description>
+          <Options moManualExpandCollapse="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>C0C0C0</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>163</ID>
+              <Description>"利萨斯兵力"</Description>
+              <LastState Value="0" RealAddress="0DA9C06C"/>
+              <Color>C0C0C0</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB4</Address>
+              <Offsets>
+                <Offset>64</Offset>
+                <Offset>10</Offset>
+                <Offset>8</Offset>
+                <Offset>5A4</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>164</ID>
+              <Description>"赫尔曼兵力"</Description>
+              <LastState Value="0" RealAddress="0DA9C070"/>
+              <Color>C0C0C0</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB4</Address>
+              <Offsets>
+                <Offset>68</Offset>
+                <Offset>10</Offset>
+                <Offset>8</Offset>
+                <Offset>5A4</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>165</ID>
+              <Description>"赛斯兵力"</Description>
+              <LastState Value="0" RealAddress="0DA9C074"/>
+              <Color>C0C0C0</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB4</Address>
+              <Offsets>
+                <Offset>6C</Offset>
+                <Offset>10</Offset>
+                <Offset>8</Offset>
+                <Offset>5A4</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>166</ID>
+              <Description>"自由都市兵力"</Description>
+              <LastState Value="0" RealAddress="0DA9C078"/>
+              <Color>C0C0C0</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"Rance10.exe"+003FCBB4</Address>
+              <Offsets>
+                <Offset>70</Offset>
+                <Offset>10</Offset>
+                <Offset>8</Offset>
+                <Offset>5A4</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>168</ID>
+              <Description>"锁定这里的值可能会导致游戏切换存档时出错。"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>0000FF</Color>
+              <GroupHeader>1</GroupHeader>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>112</ID>
+      <Description>"使用说明"</Description>
+      <Options moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <Color>FF0000</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>113</ID>
+          <Description>"点击程序左上角的计算机图标，在弹出的窗口中选择R10的进程(Rance10.exe)"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>FF0000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>111</ID>
+          <Description>"开启脚本后，双击条目对应的“数值”位置，设置ON/OFF。"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>FF0000</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>110</ID>
+          <Description>"关闭CE之前务必要先关闭脚本，否则修改效果将维持。"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>0000FF</Color>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>169</ID>
+      <Description>"insert开关脚本/home启动/end关闭"</Description>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
